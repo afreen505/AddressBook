@@ -1,2 +1,8 @@
-package address;public interface IAddressBook {
+package address;
+
+public interface IAddressBook {
+
+    void add();
+    void display();
+
 }

@@ -11,8 +11,8 @@ public class Person {
     public int zip;
 
 
-    public Person(String firstName, String lastName, String address, String city,
-                  String state, long mobileNo, int zip) {
+    public Person(String firstName, String lastName, String address,String city,
+                  String state, long mobileNo,int zip) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -22,14 +22,12 @@ public class Person {
         this.zip = zip;
     }
 
-    public String getFirstNake() {
+    public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
@@ -37,7 +35,6 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public String getAddress() {
         return address;
     }
@@ -45,7 +42,6 @@ public class Person {
     public void setAddress(String address) {
         this.address = address;
     }
-
     public String getCity() {
         return city;
     }
@@ -53,7 +49,6 @@ public class Person {
     public void setCity(String city) {
         this.city = city;
     }
-
     public String getState() {
         return state;
     }
@@ -81,6 +76,6 @@ public class Person {
     @Override
     public String toString() {
         return "Person [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
-                + ", state=" + state + ", pincode=" + zip + ", mobileNo=" + mobileNo + "]" + "\n";
+                + ", state=" + state + ", pincode=" + zip + ", mobileNo=" + mobileNo +"]"+"\n";
     }
 }
