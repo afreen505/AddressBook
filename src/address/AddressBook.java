@@ -37,8 +37,7 @@ public class AddressBook implements IAddressBook {
 
     /**
      * edit method is public void type
-     * edit method used to edit contact present in
-     * address book.
+     * edit method used to edit contact present in address book.
      * Contact will be edited , based on first name
      */
 
@@ -96,9 +95,22 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
+     * Creating delete method , so that user can delete the contact details which is
+     * not required for user by entering first name user can delete the contact
+     */
+
+    public void delete(String name) {
+        for (int i = 0; i < personList.size(); i++) {
+            if (personList.get(i).getFirstName().equals(name)) {
+                Person person = personList.get(i);
+                personList.remove(person);
+            }
+        }
+    }
+
+    /**
      * display is a public void type, display method used to display the entered
-     * details.
-     * Creating display method to display the contact details
+     * details. Creating display method to display the contact details
      */
 
     public void display() {
@@ -110,5 +122,4 @@ public class AddressBook implements IAddressBook {
                     + person.getPincode());
         }
     }
-
 }

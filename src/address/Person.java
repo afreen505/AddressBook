@@ -9,6 +9,7 @@ public class Person {
     public String state;
     public String mobileNo;
     public String zip;
+
     public Person(String firstName, String lastName, String address, String city, String state, String mobileNo2,
                   String zip2) {
         this.firstName = firstName;

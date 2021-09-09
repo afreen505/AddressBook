@@ -5,8 +5,13 @@ import java.util.Scanner;
 /**
  * Runner class is a public type
  * Runner class contains main method
- * Asking user whether they want to add the contact or delete the contact
- * if user gives wrong input, invalid input message will be displayed
+ * if condition is true
+ * By using switchCase asking user to what task user needs to perform
+ * option will be given to user to select an number
+ * 1= adding contact details
+ * 2=displaying contact details
+ * 3=editing contact details
+ * 4=deleting details
  */
 
 public class Runner {
@@ -18,7 +23,7 @@ public class Runner {
 
         while (condition == true) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit");
+            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" + "4.delete");
             Scanner option = new Scanner(System.in);
 
             switch (option.nextInt()) {
@@ -30,6 +35,11 @@ public class Runner {
                     break;
                 case 3:
                     adressBookImplementation.edit();
+                    break;
+                case 4:
+                    System.out.println("Enter the Name of the person do you wants to delete");
+                    String name = scanner.nextLine();
+                    adressBookImplementation.delete(name);
                     break;
                 default:
                     System.out.println("Invalid Input");
