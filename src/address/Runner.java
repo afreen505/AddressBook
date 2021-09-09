@@ -12,6 +12,7 @@ import java.util.Scanner;
  * 2=displaying contact details
  * 3=editing contact details
  * 4=deleting details
+ * 5=adding multiple persons
  */
 
 public class Runner {
@@ -23,7 +24,7 @@ public class Runner {
 
         while (condition == true) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" + "4.delete");
+            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" + "4.delete" + "\n" + "5.addMultiplePerson");
             Scanner option = new Scanner(System.in);
 
             switch (option.nextInt()) {
@@ -41,10 +42,12 @@ public class Runner {
                     String name = scanner.nextLine();
                     adressBookImplementation.delete(name);
                     break;
+                case 5:
+                    adressBookImplementation.addMultiplePerson();
+                    break;
                 default:
                     System.out.println("Invalid Input");
             }
         }
     }
-
 }

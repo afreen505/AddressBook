@@ -10,6 +10,8 @@ public interface IAddressBook {
 
     void delete(String firstName);
 
+    void addMultiplePerson();
+
     ;
 
 }
