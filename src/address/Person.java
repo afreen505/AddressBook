@@ -1,6 +1,13 @@
 package address;
 
-import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Person is a class of public type
+ * In this Person class setting and getting required values
+ * And initializing all required details has string
+ *
+ */
 
 public class Person {
 
@@ -12,6 +19,16 @@ public class Person {
     public String mobileNo;
     public String zip;
 
+    /**
+     * setting and getting values for Person
+     *
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param city
+     * @param state
+     * @param zip2
+     */
 
     public Person(String firstName, String lastName, String address, String city, String state, String mobileNo2,
                   String zip2) {
@@ -24,7 +41,7 @@ public class Person {
         this.zip = zip2;
     }
 
-    public Person(String name, ArrayList<Person> personList) {
+    public Person(String name, List<Person> personList) {
         // TODO Auto-generated constructor stub
     }
 

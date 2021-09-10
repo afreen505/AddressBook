@@ -8,6 +8,8 @@ public interface IAddressBook {
 
     void edit();
 
+    void edit(String firstName);
+
     void delete(String firstName);
 
     void addMultiplePerson();
@@ -18,6 +20,10 @@ public interface IAddressBook {
 
     void searchPersonByState(String firstname);
 
+    void viewByCity(String city);
+
 }
+
+
 
 

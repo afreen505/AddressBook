@@ -15,21 +15,22 @@ import java.util.Scanner;
  * 5=adding multiple persons
  * 6=ensuring there is no Duplicate Entry of the same Person in a Address Book
  * 7=Ability to search Person in a Address Book
+ * 9=Ability to view Persons by City or State
  */
+
 
 public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Welcome to the Address Book Problem");
         AddressBook adressBookImplementation = new AddressBook();
-        int k = 0;
         boolean condition = true;
 
         while (condition == true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" + "4.delete" + "\n"
                     + "5.addMultiplePerson" + "\n" + "6.duplicateCheck" + "\n" + "7.searchPersonByName" + "\n"
-                    + "8.searchPersonByState");
+                    + "8.searchPersonByState" + "\n" + "9.viewByCity");
             Scanner option = new Scanner(System.in);
 
             switch (option.nextInt()) {
@@ -40,7 +41,9 @@ public class Runner {
                     adressBookImplementation.display();
                     break;
                 case 3:
-                    adressBookImplementation.edit();
+                    System.out.println("Enter the firstName:");
+                    String firstName = scanner.nextLine();
+                    adressBookImplementation.edit(firstName);
                     break;
                 case 4:
                     System.out.println("Enter the Name of the person do you wants to delete");
@@ -66,9 +69,15 @@ public class Runner {
                     String state = scanner.nextLine();
                     adressBookImplementation.searchPersonByState(state);
                     break;
+                case 9:
+                    System.out.println("Enter the City");
+                    String city = scanner.nextLine();
+                    adressBookImplementation.viewByCity(city);
+                    break;
                 default:
                     System.out.println("Invalid Input");
             }
         }
     }
+
 }

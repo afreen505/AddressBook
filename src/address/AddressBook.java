@@ -1,106 +1,79 @@
 package address;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddressBook implements IAddressBook {
 
+    private static AddressBook addressBookImplementation;
     Scanner scanner = new Scanner(System.in);
-    public ArrayList<Person> personList = new ArrayList<Person>();
-    private Map<String, ArrayList<Person>> Books = new HashMap<>();
-    public String city;
+    ArrayList<Person> personList = new ArrayList<Person>();
+
 
     /**
      * add method is public void type add method used to add contact details to
      * address book
      */
 
+    @Override
     public void add() {
-
-        System.out.println("To which city you want to add ?");
-        city = scanner.next();
-        Person person = new Person(city, personList);
         System.out.println("Enter your first name");
-        String firstName = scanner.next();
+        String firstName = scanner.nextLine();
         System.out.println("Enter your last name");
-        String lastName = scanner.next();
+        String lastName = scanner.nextLine();
         System.out.println("Enter your address");
-        String address = scanner.next();
+        String address = scanner.nextLine();
         System.out.println("Enter your city");
-        String city = scanner.next();
+        String city = scanner.nextLine();
         System.out.println("Enter your state");
-        String state = scanner.next();
+        String state = scanner.nextLine();
         System.out.println("Enter your phone");
-        String mobileNo = scanner.next();
+        String mobileNo = scanner.nextLine();
         System.out.println("Enter your zip code");
-        String zip = scanner.next();
+        String zip = scanner.nextLine();
 
-        if (Books.containsKey(city)) {
-            Books.get(city).add(person);
-        } else {
-            personList = new ArrayList<>();
-            personList.add(person);
-            Books.put(city, personList);
-        }
-
+        Person person1 = new Person(firstName, lastName, address, city, state, mobileNo, zip);
+        personList.add(person1);
+        System.out.println("Contact added successfully");
     }
+
 
     /**
      * edit method is public void type edit method used to edit contact present in
      * address book. Contact will be edited , based on first name
      */
 
-    public void edit() {
-        System.out.println("Enter the city to which u want to edit person ");
-        city = scanner.next();
-        String enteredName;
-        System.out.println("Enter First name of contact to edit it ");
-        enteredName = scanner.next();
-        for (int i = 0; i < Books.get(city).size(); i++) {
-            if (Books.get(city).get(i).getFirstName().equals(enteredName)) {
-                int check = 0;
-                System.out.println("Person found , what do you want to edit ?");
-                System.out.println(
-                        "Enter\n1.First Name\n2.Last Name\n3.Address\n4.city\n5.State\n6.Zip\n7.Phone\n8.Email");
-                check = scanner.nextInt();
-                switch (check) {
-                    case 1:
-                        System.out.println("Enter new first name");
-                        Books.get(city).get(i).setFirstName(scanner.next());
-                        break;
-                    case 2:
-                        System.out.println("Enter new last name");
-                        Books.get(city).get(i).setLastName(scanner.next());
-                        break;
-                    case 3:
-                        System.out.println("Enter new Address");
-                        Books.get(city).get(i).setAddress(scanner.next());
-                        break;
-                    case 4:
-                        System.out.println("Enter new city");
-                        Books.get(city).get(i).setCity(scanner.next());
-                        break;
-                    case 5:
-                        System.out.println("Enter new state");
-                        Books.get(city).get(i).setState(scanner.next());
-                        break;
-                    case 6:
-                        System.out.println("Enter new zip");
-                        Books.get(city).get(i).setPincode(scanner.next());
-                        break;
-                    case 7:
-                        System.out.println("Enter new phone number");
-                        Books.get(city).get(i).setMobileNo(scanner.next());
-                        break;
-                    default:
-                        System.out.println("Invalid Entry");
-                }
-            }
+    @Override
+    public void edit(String firstName) {
+        for (int i = 0; i < personList.size(); i++) {
+            Person person = personList.get(i);
+
+            System.out.println("Hi " + person.getFirstName() + " please enter your  new Address");
+            String address = scanner.nextLine();
+            person.setAddress(address);
+
+            System.out.println("Hi " + person.getFirstName() + " please enter your  new city");
+            String city = scanner.nextLine();
+            person.setCity(city);
+
+            System.out.println("Hi " + person.getFirstName() + " please enter your  new state");
+            String state = scanner.nextLine();
+            person.setState(state);
+
+            System.out.println("Hi " + person.getFirstName() + " please enter your  new Zip Code");
+            String zip = scanner.nextLine();
+            person.setPincode(zip);
+
+            System.out.println("Hi " + person.getFirstName() + " please enter your  new Phone No");
+            String PhoneNo = scanner.nextLine();
+            person.setMobileNo(PhoneNo);
+
+            System.out.println("Hi " + person.getFirstName() + " you have sucessfully updated");
         }
+
     }
 
     /**
@@ -108,6 +81,7 @@ public class AddressBook implements IAddressBook {
      * not required for user by entering first name user can delete the contact
      */
 
+    @Override
     public void delete(String name) {
         for (int i = 0; i < personList.size(); i++) {
             if (personList.get(i).getFirstName().equals(name)) {
@@ -123,11 +97,21 @@ public class AddressBook implements IAddressBook {
      * If contact person already present it display duplicate statement
      */
 
+    @Override
     public void addMultiplePerson() {
         System.out.println("Enter a person Name:");
         String firstName = scanner.nextLine();
         for (int i = 0; i < personList.size(); i++) {
             Person person = personList.get(i);
+
+            /**
+             * Uc6: Ability to add multiple adress book to the system each adress book has
+             * unique name
+             */
+
+            if (personList.get(i).getFirstName().equals(firstName)) {
+                System.out.println("Duplicate");
+            }
         }
     }
 
@@ -142,7 +126,7 @@ public class AddressBook implements IAddressBook {
             Person person = personList.get(i);
             System.out.println("FirstName:" + person.getFirstName() + "\n" + "LastName:" + person.getLastName() + "\n"
                     + "Adress:" + person.getAddress() + "\n" + "City:" + person.getCity() + "\n" + "State:"
-                    + person.getCity() + "\n" + "Phone-Number:" + person.getMobileNo() + "\n" + "Pin-code:"
+                    + person.getCity() + "Phone-Number:" + person.getMobileNo() + "\n" + "Pin-code:"
                     + person.getPincode());
         }
     }
@@ -150,7 +134,6 @@ public class AddressBook implements IAddressBook {
     /**
      * duplicateCheck is an public void type
      * ensuring there is no Duplicate Entry of the same Person in a Address Book
-     *
      */
     public void duplicateCheck(String firstName) {
         for (int k = 0; k < personList.size(); k++) {
@@ -187,5 +170,21 @@ public class AddressBook implements IAddressBook {
         List listPerson = (List) personList.stream()
                 .filter(person1 -> person1.getFirstName().equalsIgnoreCase(firstname)).collect(Collectors.toList());
         personList.stream().forEach(System.out::println);
+    }
+
+    /**
+     * Uc9: view person by city or state
+     */
+
+    @Override
+    public void viewByCity(String city) {
+        try {
+            List listPerson = (List) ((Collection<Person>) listPerson).stream().filter(person1 -> person1.getCity().equalsIgnoreCase(city).collectors.toList());
+            for (Person person : personList) {
+                System.out.println(person);
+            }
+        } catch (Exception e) {
+            System.out.println("Exception occured while viewing person by city");
+        }
     }
 }
