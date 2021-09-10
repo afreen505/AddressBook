@@ -21,6 +21,10 @@ public class Person {
         this.zip = zip2;
     }
 
+    public Person(String name, List<Person> personList) {
+        // TODO Auto-generated constructor stub
+    }
+
     public String getFirstName() {
         return firstName;
     }

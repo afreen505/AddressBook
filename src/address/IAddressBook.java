@@ -1,4 +1,5 @@
 package address;
+
 public interface IAddressBook {
 
     void add();
@@ -10,6 +11,8 @@ public interface IAddressBook {
     void delete(String firstName);
 
     void addMultiplePerson();
+
+    void duplicateCheck(String firstName);
 
 
 }

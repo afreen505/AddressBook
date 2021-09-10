@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class AddressBook implements IAddressBook {
 
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Person> personList = new ArrayList<Person>();
+    public ArrayList<Person> personList = new ArrayList<Person>();
     Map<String, Person> hashmap = new HashMap<>();
 
     /**
@@ -38,9 +38,8 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
-     * edit method is public void type
-     * edit method used to edit contact present in address book.
-     * Contact will be edited , based on first name
+     * edit method is public void type edit method used to edit contact present in
+     * address book. Contact will be edited , based on first name
      */
 
     public void edit() {
@@ -112,8 +111,8 @@ public class AddressBook implements IAddressBook {
 
     /**
      * Creating AddMultiplePerson method , so that user can add the contact details
-     * by entering person name user can delete the contact.
-     * If contact person already present it display duplicate statement
+     * by entering person name user can delete the contact. If contact person
+     * already present it display duplicate statement
      */
 
     public void addMultiplePerson() {
@@ -125,8 +124,9 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
-     * display is a public void type, display method used to display the entered
-     * details. Creating display method to display the contact details
+     * display is a public void type,
+     * display method used to display the entered details.
+     * Creating display method to display the contact details
      */
 
     public void display() {
@@ -136,6 +136,23 @@ public class AddressBook implements IAddressBook {
                     + "Adress:" + person.getAddress() + "\n" + "City:" + person.getCity() + "\n" + "State:"
                     + person.getCity() + "\n" + "Phone-Number:" + person.getMobileNo() + "\n" + "Pin-code:"
                     + person.getPincode());
+        }
+    }
+
+    /**
+     * duplicateCheck is an public void type
+     * ensuring there is no Duplicate Entry of the same Person in a Address Book
+     */
+    public void duplicateCheck(String firstName) {
+        for (int k = 0; k < personList.size(); k++) {
+            String contactName = personList.get(k).firstName;
+
+            if (firstName.equals(contactName)) {
+                System.out.println("This Person is Already Present");
+            } else {
+                System.out.println("You can Add this Person");
+                break;
+            }
         }
     }
 }
