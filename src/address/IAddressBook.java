@@ -1,5 +1,4 @@
 package address;
-
 public interface IAddressBook {
 
     void add();
@@ -12,6 +11,5 @@ public interface IAddressBook {
 
     void addMultiplePerson();
 
-    ;
 
 }

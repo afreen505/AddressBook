@@ -24,7 +24,7 @@ public class Runner {
 
         while (condition == true) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" + "4.delete" + "\n" + "5.addMultiplePerson");
+            System.out.println("1.add" + "\n" + "2.Display" + "\n" + "3.edit" + "\n" +"4.delete" + "\n" +"5.addMultiplePerson");
             Scanner option = new Scanner(System.in);
 
             switch (option.nextInt()) {
@@ -50,4 +50,5 @@ public class Runner {
             }
         }
     }
+
 }

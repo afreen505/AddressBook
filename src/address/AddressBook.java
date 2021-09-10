@@ -1,12 +1,15 @@
 package address;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook implements IAddressBook {
 
     Scanner scanner = new Scanner(System.in);
     ArrayList<Person> personList = new ArrayList<Person>();
+    Map<String, Person> hashmap = new HashMap<>();
 
     /**
      * add method is public void type
@@ -108,9 +111,9 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
-     *Creating AddMultiplePerson method , so that user can add the contact details
-     *by entering person name user can delete the contact.
-     *If contact person already present it display duplicate statement
+     * Creating AddMultiplePerson method , so that user can add the contact details
+     * by entering person name user can delete the contact.
+     * If contact person already present it display duplicate statement
      */
 
     public void addMultiplePerson() {
