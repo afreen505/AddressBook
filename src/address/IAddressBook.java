@@ -14,5 +14,10 @@ public interface IAddressBook {
 
     void duplicateCheck(String firstName);
 
+    void searchPersonByName(String firstname);
+
+    void searchPersonByState(String firstname);
 
 }
+
+

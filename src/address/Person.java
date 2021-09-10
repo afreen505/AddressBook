@@ -1,5 +1,7 @@
 package address;
 
+import java.util.ArrayList;
+
 public class Person {
 
     public String firstName;
@@ -9,6 +11,7 @@ public class Person {
     public String state;
     public String mobileNo;
     public String zip;
+
 
     public Person(String firstName, String lastName, String address, String city, String state, String mobileNo2,
                   String zip2) {
@@ -21,7 +24,7 @@ public class Person {
         this.zip = zip2;
     }
 
-    public Person(String name, List<Person> personList) {
+    public Person(String name, ArrayList<Person> personList) {
         // TODO Auto-generated constructor stub
     }
 
