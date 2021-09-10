@@ -23,7 +23,12 @@ public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Welcome to the Address Book Problem");
-        AddressBook adressBookImplementation = new AddressBook();
+        AddressBook adressBookImplementation = new AddressBook() {
+            @Override
+            public void edit() {
+                
+            }
+        };
         boolean condition = true;
 
         while (condition == true) {

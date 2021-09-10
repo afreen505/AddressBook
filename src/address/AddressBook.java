@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class AddressBook implements IAddressBook {
+public abstract class AddressBook implements IAddressBook {
 
     private static AddressBook addressBookImplementation;
     Scanner scanner = new Scanner(System.in);
