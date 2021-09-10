@@ -1,8 +1,8 @@
 package address;
 
+import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -12,10 +12,8 @@ public class AddressBook implements IAddressBook {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Person> personList = new ArrayList<Person>();
 
-
     /**
-     * add method is public void type add method used to add contact details to
-     * address book
+     * Uc2: Ability to add a new contact to Address Book
      */
 
     @Override
@@ -40,10 +38,18 @@ public class AddressBook implements IAddressBook {
         System.out.println("Contact added successfully");
     }
 
+    public void display() {
+        for (int i = 0; i < personList.size(); i++) {
+            Person person = personList.get(i);
+            System.out.println("FirstName:" + person.getFirstName() + "\n" + "LastName:" + person.getLastName() + "\n"
+                    + "Adress:" + person.getAddress() + "\n" + "City:" + person.getCity() + "\n" + "State:"
+                    + person.getCity() + "Phone-Number:" + person.getMobileNo() + "\n" + "Pin-code:"
+                    + person.getPincode());
+        }
+    }
 
     /**
-     * edit method is public void type edit method used to edit contact present in
-     * address book. Contact will be edited , based on first name
+     * Uc3: Ability to edit existing contact person using their name
      */
 
     @Override
@@ -77,8 +83,7 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
-     * Creating delete method , so that user can delete the contact details which is
-     * not required for user by entering first name user can delete the contact
+     * Uc4: Ability to delete a person using persons name
      */
 
     @Override
@@ -92,9 +97,7 @@ public class AddressBook implements IAddressBook {
     }
 
     /**
-     * Creating AddMultiplePerson method , so that user can add the contact details
-     * by entering person name user can delete the contact.
-     * If contact person already present it display duplicate statement
+     * Uc5: Ability to add multiple person to Address Book
      */
 
     @Override
@@ -111,39 +114,6 @@ public class AddressBook implements IAddressBook {
 
             if (personList.get(i).getFirstName().equals(firstName)) {
                 System.out.println("Duplicate");
-            }
-        }
-    }
-
-    /**
-     * display is a public void type, display method used to display the entered
-     * details.
-     * Creating display method to display the contact details
-     */
-
-    public void display() {
-        for (int i = 0; i < personList.size(); i++) {
-            Person person = personList.get(i);
-            System.out.println("FirstName:" + person.getFirstName() + "\n" + "LastName:" + person.getLastName() + "\n"
-                    + "Adress:" + person.getAddress() + "\n" + "City:" + person.getCity() + "\n" + "State:"
-                    + person.getCity() + "Phone-Number:" + person.getMobileNo() + "\n" + "Pin-code:"
-                    + person.getPincode());
-        }
-    }
-
-    /**
-     * duplicateCheck is an public void type
-     * ensuring there is no Duplicate Entry of the same Person in a Address Book
-     */
-    public void duplicateCheck(String firstName) {
-        for (int k = 0; k < personList.size(); k++) {
-            String contactName = personList.get(k).firstName;
-
-            if (firstName.equals(contactName)) {
-                System.out.println("This Person is Already Present");
-            } else {
-                System.out.println("You can Add this Person");
-                break;
             }
         }
     }
@@ -175,16 +145,35 @@ public class AddressBook implements IAddressBook {
     /**
      * Uc9: view person by city or state
      */
-
     @Override
     public void viewByCity(String city) {
-        try {
-            List listPerson = (List) ((Collection<Person>) listPerson).stream().filter(person1 -> person1.getCity().equalsIgnoreCase(city).collectors.toList());
-            for (Person person : personList) {
-                System.out.println(person);
-            }
-        } catch (Exception e) {
-            System.out.println("Exception occured while viewing person by city");
+        Collection<Person> list;
+        List people = (List) personList.stream().filter(person1 -> person1.getFirstName().equalsIgnoreCase(city))
+                .collect(Collectors.toList());
+
+        for (Person person : personList) {
+            System.out.println(person);
         }
+    }
+
+    /**
+     * Uc10: count by city or state
+     */
+
+    @Override
+    public void searchPersonInCity(String firstName) {
+        Collection<Person> list;
+        List people = (List) personList.stream().filter(person1 -> person1.getFirstName().equalsIgnoreCase(firstName))
+                .collect(Collectors.toList());
+
+        for (Person person : personList) {
+            System.out.println(person.getFirstName() + "---->" + person.getCity());
+        }
+    }
+
+    @Override
+    public void duplicateCheck(String firstName) {
+        // TODO Auto-generated method stub
+
     }
 }

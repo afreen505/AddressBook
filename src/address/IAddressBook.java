@@ -22,6 +22,10 @@ public interface IAddressBook {
 
     void viewByCity(String city);
 
+    void searchPersonInCity(String firstName);
+
+}
+
 }
 
 
